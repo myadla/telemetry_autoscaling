@@ -1,7 +1,7 @@
 ---
 - name: Verify overcloud deployment for autoscaling
   import_playbook:
-    "{{ verify_autoscaling | default('playbooks/03-verify_autoscaling.yaml') }}"
+    "{{ verify_autoscaling | default('playbooks/verify_autoscaling.yaml') }}"
   when:
     - test.verify.autoscaling|default('')
     - test.ospversion is defined
@@ -9,7 +9,7 @@
 
 - name: Configure the heat service for autoscaling
   import_playbook:
-    "{{ configure_heat | default('playbooks/04-configure_heat.yaml') }}"
+    "{{ configure_heat | default('playbooks/configure_heat.yaml') }}"
   when:
     - test.configure.heat|default('')
     - test.ospversion is defined
@@ -17,7 +17,7 @@
 
 - name: Creating the stack deployment for autoscaling
   import_playbook:
-    "{{ create_stack | default('playbooks/05-creating_stack.yaml') }}"
+    "{{ create_stack | default('playbooks/creating_stack.yaml') }}"
   when:
     - test.create.stack|default('')
     - test.ospversion is defined
@@ -25,7 +25,7 @@
 
 - name: Testing automatic scaling up of instances
   import_playbook:
-    "{{ test_autoscale_up | default('playbooks/06-test_autoscaling_up.yaml') }}"
+    "{{ test_autoscale_up | default('playbooks/test_autoscaling_up.yaml') }}"
   when:
     - test.test.autoscale.up|default('')
     - test.ospversion is defined
@@ -33,7 +33,7 @@
 
 - name: Testing automatic scaling down of instances
   import_playbook:
-    "{{ test_autoscale_down | default('playbooks/07-test_autoscaling_down.yaml') }}"
+    "{{ test_autoscale_down | default('playbooks/test_autoscaling_down.yaml') }}"
   when:
     - test.test.autoscale.down|default('')
     - test.ospversion is defined

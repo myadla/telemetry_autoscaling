@@ -1,5 +1,8 @@
 #!/usr/bin/env ansible-playbook
 ---
+# Creating the stack deployment for autoscaling
+# ansible-playbook -v -i `ir workspace inventory` creating_stack.yaml
+
 - hosts: undercloud
   become: no
   name: Creating the stack deployment for autoscaling
@@ -67,3 +70,5 @@
         server_group="$STACK_ID"
       register: result
       failed_when: result.rc >= 1
+
+...

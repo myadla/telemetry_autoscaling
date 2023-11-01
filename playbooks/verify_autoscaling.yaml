@@ -1,5 +1,8 @@
 #!/usr/bin/env ansible-playbook
 ---
+# Verify overcloud deployment
+# ansible-playbook -v -i `ir workspace inventory` verify_autoscaling.yaml
+
 - hosts: undercloud
   become: no
   name: Verifying the overcloud deployment for autoscaling
@@ -39,3 +42,4 @@
         openstack metric status --fit-width;
       register: result
       failed_when: result.rc >= 1
+...

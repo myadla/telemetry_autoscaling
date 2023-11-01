@@ -1,5 +1,8 @@
 #!/usr/bin/env ansible-playbook
 ---
+# Testing automatic scaling up of instances
+# ansible-playbook -v -i `ir workspace inventory` test_autoscaling_up.yaml
+
 - hosts: undercloud
   become: no
   name: Test autoscaling
@@ -45,3 +48,5 @@
         openstack server list;
       register: result
       failed_when: '"ACTIVE" not in result.stdout'
+
+...
